@@ -1,4 +1,4 @@
-FROM fluent/fluentd:edge-onbuild
+FROM fluent/fluentd:stable-onbuild
 LABEL Maintainer="Sergey Ugdyzhekov, sergey@ugdyzhekov.org" Description="Fluentd docker image"
 
 USER root
@@ -10,11 +10,9 @@ RUN apk add --update --virtual .build-deps \
     && sudo -u fluent gem install \
         fluent-plugin-secure-forward \
         fluent-plugin-elasticsearch \
-        fluent-plugin-kinesis --no-document \
-    && sudo -u fluent gem install \
-        fluent-plugin-s3 -v 1.0.0.rc2 --no-document \
-    && sudo -u fluent gem install \
-        fluent-plugin-influxdb -v 1.0.0.rc1 --no-document \
+        fluent-plugin-kinesis \
+        fluent-plugin-s3 \
+        fluent-plugin-influxdb --no-document \
     && sudo -u fluent gem sources --clear-all \
     && apk del .build-deps \
     && rm -rf /var/cache/apk/* \
