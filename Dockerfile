@@ -13,6 +13,7 @@ RUN apk add --update --virtual .build-deps \
         fluent-plugin-kinesis \
         fluent-plugin-s3 \
         fluent-plugin-influxdb --no-document \
+        bigdecimal \
     && sudo -u fluent gem sources --clear-all \
     && apk del .build-deps \
     && rm -rf /var/cache/apk/* \
